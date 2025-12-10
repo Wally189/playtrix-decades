@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="now">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlayTriX OS · Privacy</title>
+
+  <link rel="stylesheet" href="/Assets/playtrix.css" />
+  <link rel="stylesheet" href="/Assets/themes.css" />
+  <script defer src="/Assets/engine.js"></script>
+</head>
+
+<body class="pt-shell">
+  <!-- HEADER -->
+  <header class="pt-header">
+    <div class="pt-header-left">
+      <span class="pt-logo">PlayTriX</span>
+      <span id="pt-greeting" class="pt-greeting">Hello</span>
+    </div>
+
+    <div class="pt-header-middle">
+      <span id="pt-time" class="pt-time">00:00</span>
+      <span id="pt-date" class="pt-date">DD MMM YYYY</span>
+    </div>
+
+    <div class="pt-header-right">
+      <button id="pt-theme-toggle" class="pt-btn-small">Now</button>
+
+      <nav class="pt-nav">
+        <a href="index.html" class="pt-nav-link">Console</a>
+        <a href="about.html" class="pt-nav-link">About</a>
+        <a href="tools.html" class="pt-nav-link">Tools</a>
+        <a href="browser.html" class="pt-nav-link">Reference</a>
+        <a href="settings.html" class="pt-nav-link">Settings</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="pt-main">
+    <!-- Back button -->
+    <section class="pt-section">
+      <button
+        class="pt-btn-small"
+        type="button"
+        onclick="window.history.back();"
+      >
+        ← Back
+      </button>
+    </section>
+
+    <section class="pt-section">
+      <h2 class="pt-section-title">Privacy</h2>
+
+      <div class="pt-tile">
+        <div class="pt-tile-label">Short version</div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          PlayTriX is designed to respect your privacy. There are no accounts, no hidden tracking scripts
+          and no data being sent to a server from this page.
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-section">
+      <h2 class="pt-section-title">What PlayTriX does</h2>
+      <div class="pt-tile">
+        <div class="pt-tile-label">On your device only</div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          PlayTriX uses your browser’s built-in storage (for example <em>localStorage</em>) to remember:
+        </div>
+        <ul class="pt-tile-meta" style="padding-left:1.1rem; margin-top:0.4rem;">
+          <li>which theme you’ve chosen,</li>
+          <li>which tiles and favourites you’ve set up,</li>
+          <li>whether you’ve turned on the password lock (once that’s wired in),</li>
+          <li>and other settings that make the console feel like yours.</li>
+        </ul>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          This information never leaves your device unless you choose to export a backup file yourself.
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-section">
+      <h2 class="pt-section-title">What PlayTriX does not do</h2>
+      <div class="pt-tile">
+        <div class="pt-tile-label">No tracking, no ads, no analytics</div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          PlayTriX does <strong>not</strong>:
+        </div>
+        <ul class="pt-tile-meta" style="padding-left:1.1rem; margin-top:0.4rem;">
+          <li>create online accounts for you,</li>
+          <li>track your browsing on other sites,</li>
+          <li>show adverts or sell your data,</li>
+          <li>send your tiles or notes to a central server.</li>
+        </ul>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          It’s a static set of pages designed to sit quietly on your device as a personal console.
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-section">
+      <h2 class="pt-section-title">Backups & your responsibility</h2>
+      <div class="pt-tile">
+        <div class="pt-tile-label">You stay in control</div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          When you use the backup tools on the Settings page, you create a file or a block of text
+          that represents your PlayTriX setup. That backup is yours:
+        </div>
+        <ul class="pt-tile-meta" style="padding-left:1.1rem; margin-top:0.4rem;">
+          <li>you choose where to store it,</li>
+          <li>you decide who can see it,</li>
+          <li>you can delete it at any time.</li>
+        </ul>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          If you share a backup with someone else, they will be able to load a copy of your console on
+          their own device – this can be intentional (for example, giving someone a starter layout).
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-section">
+      <h2 class="pt-section-title">Clearing data</h2>
+      <div class="pt-tile">
+        <div class="pt-tile-label">How to wipe PlayTriX</div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          Because PlayTriX lives inside your browser, clearing it is as simple as clearing that browser’s
+          stored data for this site. The exact steps vary by browser, but generally:
+        </div>
+        <ul class="pt-tile-meta" style="padding-left:1.1rem; margin-top:0.4rem;">
+          <li>Open your browser’s settings.</li>
+          <li>Look for “Site settings”, “Storage” or similar.</li>
+          <li>Find the entry for the PlayTriX site and clear its data.</li>
+        </ul>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          After that, PlayTriX will return to its first-run state. If you have a backup, you can import it
+          to restore your console.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="pt-footer">
+    <p>PlayTriX OS · Built with care by Alan Gallagher · No tracking. Your data stays on your device.</p>
+  </footer>
+</body>
+</html>

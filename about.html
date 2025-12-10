@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="now">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlayTriX OS · About</title>
+
+  <link rel="stylesheet" href="Assets/playtrix.css" />
+  <link rel="stylesheet" href="/Assets/themes.css" />
+  <script defer src="Assets/engine.js"></script>
+</head>
+
+<body class="pt-shell">
+  <!-- HEADER -->
+  <header class="pt-header">
+    <div class="pt-header-left">
+      <span class="pt-logo">PlayTriX</span>
+      <span id="pt-greeting" class="pt-greeting">Hello</span>
+    </div>
+
+    <div class="pt-header-middle">
+      <span id="pt-time" class="pt-time">00:00</span>
+      <span id="pt-date" class="pt-date">DD MMM YYYY</span>
+    </div>
+
+    <div class="pt-header-right">
+      <button id="pt-theme-toggle" class="pt-btn-small">Now</button>
+
+      <nav class="pt-nav">
+        <a href="/index.html" class="pt-nav-link">Console</a>
+        <a href="about.html" class="pt-nav-link">About</a>
+        <a href="tools.html" class="pt-nav-link">Tools</a>
+        <a href="browser.html" class="pt-nav-link">Reference</a>
+        <a href="settings.html" class="pt-nav-link">Settings</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="pt-main">
+    <section class="pt-section">
+      <h2 class="pt-section-title">What is PlayTriX?</h2>
+      <div class="pt-tile">
+        <div class="pt-tile-label">A tiny personal operating system for your life</div>
+        <div class="pt-tile-meta">
+          PlayTriX is a simple, offline “console” for your life, work and projects.
+          It doesn’t replace your calendar, email or storage – it pulls everything
+          together into one calm launch pad so you always know where to start.
+        </div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          It’s designed to feel like an operating system from another timeline:
+          neat, opinionated, slightly retro – but focused on clarity instead of noise.
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-section">
+      <h2 class="pt-section-title">How it works</h2>
+      <div class="pt-tile">
+        <div class="pt-tile-label">Pillars · Tiles · Links</div>
+        <ul class="pt-tile-meta" style="padding-left:1.1rem; margin-top:0.4rem;">
+          <li><strong>Pillars</strong> are the big areas of your life (Personal, Work, Civic, Creative, Systems).</li>
+          <li><strong>Tiles</strong> are shortcuts – to websites, cloud folders, documents or tools.</li>
+          <li><strong>Reference</strong> is your Filofax-style page for useful info you want close by.</li>
+        </ul>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          As you use PlayTriX, you’ll gradually build a console that feels like “home base” for your brain.
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVACY -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Privacy & data</h2>
+      <div class="pt-tile">
+        <div class="pt-tile-label">No accounts. No tracking. No data collection.</div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          PlayTriX does not send anything anywhere. There are:
+        </div>
+        <ul class="pt-tile-meta" style="padding-left:1.1rem; margin-top:0.4rem;">
+          <li>no logins</li>
+          <li>no analytics</li>
+          <li>no cookies for tracking</li>
+          <li>no servers storing your information</li>
+        </ul>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          Everything you configure is stored in your own browser’s storage on your own device.
+          If you clear your browser data, PlayTriX forgets – which is why there’s a backup system
+          in the Settings page so <em>you</em> can keep a copy.
+        </div>
+      </div>
+    </section>
+
+    <!-- PASSWORD -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Password protection</h2>
+      <div class="pt-tile">
+        <div class="pt-tile-label">An extra lock on top of your usual passwords</div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          PlayTriX includes an optional lock screen. It is not meant to replace the passcode
+          for your phone or laptop – it simply keeps your console private if someone else
+          is using your device.
+        </div>
+        <ul class="pt-tile-meta" style="padding-left:1.1rem; margin-top:0.4rem;">
+          <li>You can set your own PlayTriX password.</li>
+          <li>You can change it or remove it at any time.</li>
+          <li>The password is stored only on your device, not online.</li>
+        </ul>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          You’ll find the password options in the dedicated <strong>Password</strong> screen and in
+          the <strong>Settings → Security</strong> area once those are turned on.
+        </div>
+      </div>
+    </section>
+
+    <!-- ADDING LINKS -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Adding your own links</h2>
+      <div class="pt-tile">
+        <div class="pt-tile-label">Drag. Drop. Done.</div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          Any place you can copy a link, you can turn it into a PlayTriX tile.
+        </div>
+        <ul class="pt-tile-meta" style="padding-left:1.1rem; margin-top:0.4rem;">
+          <li>Open the site, folder or app in your browser.</li>
+          <li>Copy the address (URL) from the address bar.</li>
+          <li>Drop or paste it into a PlayTriX tools row (Console or Tools page).</li>
+        </ul>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          This works for OneDrive folders, Google Drive files, email, WhatsApp Web, parish
+          websites, banking, to-do apps – anything with a link.
+        </div>
+      </div>
+    </section>
+
+    <!-- DEVICES -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Use it on different devices</h2>
+      <div class="pt-tile">
+        <div class="pt-tile-label">Phones, tablets, laptops, desktops</div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          PlayTriX is just a website, so it runs anywhere you have a modern browser:
+          iPhone, Android, Windows, Mac, iPad, Chromebook and more.
+        </div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          Each device keeps its own setup. If you want the <em>same</em> console on several
+          devices, you can export your PlayTriX setup as a backup file on one device and
+          import it on another using the <strong>Settings → Backup tools</strong> section.
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTALL AS APP -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Make it feel like an app</h2>
+      <div class="pt-tile">
+        <div class="pt-tile-label">Add PlayTriX to your home screen or dock</div>
+
+        <div class="pt-tile-meta" style="margin-top:0.4rem;"><strong>iPhone / iPad (Safari)</strong></div>
+        <ul class="pt-tile-meta" style="padding-left:1.1rem;">
+          <li>Open the PlayTriX site in Safari.</li>
+          <li>Tap the <strong>Share</strong> button.</li>
+          <li>Scroll and tap <strong>Add to Home Screen</strong>.</li>
+          <li>Give it a name (for example “PlayTriX”) and tap <strong>Add</strong>.</li>
+        </ul>
+
+        <div class="pt-tile-meta" style="margin-top:0.6rem;"><strong>Android (Chrome / Edge / Brave)</strong></div>
+        <ul class="pt-tile-meta" style="padding-left:1.1rem;">
+          <li>Open PlayTriX in your browser.</li>
+          <li>Tap the <strong>⋮</strong> menu.</li>
+          <li>Choose <strong>Add to Home screen</strong> or <strong>Install app</strong>.</li>
+          <li>Confirm – it will now open full-screen like an app.</li>
+        </ul>
+
+        <div class="pt-tile-meta" style="margin-top:0.6rem;"><strong>Windows / Mac (Chrome or Edge)</strong></div>
+        <ul class="pt-tile-meta" style="padding-left:1.1rem;">
+          <li>Open PlayTriX in Chrome or Edge.</li>
+          <li>In Chrome: open the <strong>⋮</strong> menu → <strong>Install PlayTriX…</strong>.</li>
+          <li>In Edge: open <strong>Apps</strong> → <strong>Install this site as an app</strong>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CLOUD LINKS -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Connecting OneDrive & Google Drive</h2>
+      <div class="pt-tile">
+        <div class="pt-tile-label">Cloud storage, your way</div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          PlayTriX doesn’t try to replace cloud storage – it simply gives you fast,
+          predictable entry points into the places you already use.
+        </div>
+
+        <div class="pt-tile-meta" style="margin-top:0.4rem;"><strong>OneDrive</strong></div>
+        <ul class="pt-tile-meta" style="padding-left:1.1rem;">
+          <li>Open OneDrive in your browser.</li>
+          <li>Navigate to the folder or file you use most.</li>
+          <li>Copy the address from the address bar.</li>
+          <li>Create a tile in PlayTriX and paste that link in.</li>
+        </ul>
+
+        <div class="pt-tile-meta" style="margin-top:0.4rem;"><strong>Google Drive</strong></div>
+        <ul class="pt-tile-meta" style="padding-left:1.1rem;">
+          <li>Open Google Drive in your browser.</li>
+          <li>Right-click a folder or file → <strong>Get link</strong> (make sure you can open it yourself).</li>
+          <li>Copy the link and paste it into a PlayTriX tile.</li>
+        </ul>
+
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          Over time, your console becomes a doorway into the exact files and locations that matter,
+          without you needing to remember where everything lives.
+        </div>
+      </div>
+    </section>
+
+    <!-- BACKUPS SUMMARY -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Backups & resets</h2>
+      <div class="pt-tile">
+        <div class="pt-tile-label">Keeping your setup safe</div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          Because browsers can forget data when you clear history or change device,
+          PlayTriX includes a simple backup system in <strong>Settings → Backup tools</strong>.
+        </div>
+        <ul class="pt-tile-meta" style="padding-left:1.1rem; margin-top:0.4rem;">
+          <li><strong>Export setup</strong> – save your console as a small file.</li>
+          <li><strong>Import setup</strong> – load that file on the same or another device.</li>
+          <li><strong>Copy backup string</strong> – a text version you can paste into notes.</li>
+        </ul>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          If anything ever goes wrong, you can reset PlayTriX and restore from your own backup.
+          No one else ever sees your data.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="pt-footer">
+    <p>PlayTriX OS · Built with care by Alan Gallagher · No tracking. Your data stays on your device.</p>
+  </footer>
+</body>
+</html>

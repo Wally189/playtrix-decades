@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="now">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlayTriX OS · Browser & Reference</title>
+
+  <link rel="stylesheet" href="Assets/playtrix.css" />
+  <link rel="stylesheet" href="/Assets/themes.css" />
+  <script defer src="Assets/engine.js"></script>
+</head>
+
+<body class="pt-shell">
+  <!-- HEADER -->
+  <header class="pt-header">
+    <div class="pt-header-left">
+      <span class="pt-logo">PlayTriX</span>
+      <span id="pt-greeting" class="pt-greeting">Hello</span>
+    </div>
+
+    <div class="pt-header-middle">
+      <span id="pt-time" class="pt-time">00:00</span>
+      <span id="pt-date" class="pt-date">DD MMM YYYY</span>
+    </div>
+
+    <div class="pt-header-right">
+      <button id="pt-theme-toggle" class="pt-btn-small">Now</button>
+
+      <nav class="pt-nav">
+        <a href="index.html" class="pt-nav-link">Console</a>
+        <a href="about.html" class="pt-nav-link">About</a>
+        <a href="tools.html" class="pt-nav-link">Tools</a>
+        <a href="browser.html" class="pt-nav-link">Reference</a>
+        <a href="settings.html" class="pt-nav-link">Settings</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="pt-main">
+    <!-- FAVOURITE BROWSER -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Favourite browser</h2>
+      <div class="pt-tile">
+        <div class="pt-tile-label">Choose the browser that feels like “home”</div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          This section is purely for you. It doesn’t change your system defaults –
+          it simply reminds you which browser you’ve chosen as your “PlayTriX home”.
+        </div>
+
+        <div class="pt-tile-meta" style="margin-top:0.6rem;">
+          Pick the one that matches how you actually work:
+        </div>
+
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          • <strong>Chrome</strong> – everything + extensions + Google life<br />
+          • <strong>Edge</strong> – Microsoft world, OneDrive, Office, work setups<br />
+          • <strong>Firefox</strong> – privacy-minded, customisable, slightly stubborn<br />
+          • <strong>Safari</strong> – Apple ecosystem, iPhone/iPad/Mac harmony<br />
+          • <strong>Brave</strong> – privacy and ad-blocking built in<br />
+          • <strong>Opera</strong> – sidebars, extras, “why yes I am a bit different”<br />
+        </div>
+
+        <div class="pt-tile-meta" style="margin-top:0.6rem;">
+          In a later version of PlayTriX you’ll be able to save this choice and show
+          a matching icon on your Console. For now, treat this as a gentle nudge:
+          pick one main browser and let everything else be “backup”.
+        </div>
+      </div>
+    </section>
+
+    <!-- FILOFAX REFERENCE -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Filofax reference</h2>
+      <div class="pt-grid">
+        <!-- Weights & Measures -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Weights &amp; measures</div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            <strong>Metric → Imperial (approx.)</strong><br />
+            • 1 kg ≈ 2.2 lb<br />
+            • 500 g ≈ 1.1 lb (about a pound)<br />
+            • 250 g ≈ 9 oz<br />
+            • 1 litre ≈ 1.75 pints<br />
+            • 100 ml ≈ 3.5 fl oz<br />
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.6rem;">
+            <strong>Kitchen shorthand</strong><br />
+            • 1 tsp ≈ 5 ml<br />
+            • 1 tbsp ≈ 15 ml<br />
+            • 1 cup ≈ 240 ml (roughly a mug)<br />
+          </div>
+        </article>
+
+        <!-- Temperatures -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Temperatures</div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            <strong>Quick conversions</strong><br />
+            • °F → °C : (°F − 32) ÷ 2 ≈ °C (rough enough for weather)<br />
+            • °C → °F : (°C × 2) + 32 ≈ °F<br />
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.6rem;">
+            <strong>Kitchen oven guide</strong><br />
+            • 160°C ≈ 325°F – slow/medium<br />
+            • 180°C ≈ 350°F – standard baking<br />
+            • 200°C ≈ 400°F – hot oven<br />
+          </div>
+        </article>
+
+        <!-- Clothing sizes -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Clothing sizes (rough guide)</div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            <strong>Men’s shirts</strong><br />
+            • UK 14½–15" ≈ S<br />
+            • UK 15½–16" ≈ M / L<br />
+            • UK 16½–17" ≈ XL<br />
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.6rem;">
+            <strong>Shoes (men)</strong><br />
+            • UK 7 ≈ EU 41<br />
+            • UK 8 ≈ EU 42<br />
+            • UK 9 ≈ EU 43<br />
+            • UK 10 ≈ EU 44–45<br />
+          </div>
+        </article>
+
+        <!-- Time zones -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Time zones</div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            All relative to UK time (GMT / BST):
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            • Ireland – same as UK<br />
+            • Central Europe – UK + 1 hour<br />
+            • Eastern Europe – UK + 2 hours<br />
+            • US Eastern – UK − 5 hours (approx.)<br />
+            • US Pacific – UK − 8 hours (approx.)<br />
+            • India – UK + 5½ hours<br />
+            • Australia (Sydney) – UK + 9 to +11 hours (seasonal)<br />
+          </div>
+        </article>
+
+        <!-- Paper sizes -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Paper sizes</div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            <strong>A-series</strong><br />
+            • A4 – 210 × 297 mm (everyday sheets)<br />
+            • A5 – half of A4<br />
+            • A3 – double A4<br />
+            • A6 – postcard-ish<br />
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.6rem;">
+            <strong>Other</strong><br />
+            • US Letter – 8.5" × 11"<br />
+            • US Legal – 8.5" × 14"<br />
+          </div>
+        </article>
+
+        <!-- Symbols & numerals -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Symbols & numerals</div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            <strong>Common currency symbols</strong><br />
+            • £ – pound sterling<br />
+            • € – euro<br />
+            • $ – dollar<br />
+            • ¥ – yen / yuan<br />
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.6rem;">
+            <strong>Roman numerals</strong><br />
+            • I = 1 · V = 5 · X = 10<br />
+            • L = 50 · C = 100 · D = 500 · M = 1000<br />
+            Example: MCMLXXV = 1975
+          </div>
+        </article>
+
+        <!-- Odds & ends -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Odds & ends</div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            A few tiny facts that are handy when your brain is tired:
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            • 52 weeks in a year · 365 days (366 leap years)<br />
+            • 10,000 steps ≈ 7–8 km for most people<br />
+            • 1 GB ≈ 1000 MB (ish – tech people will argue, your Filofax does not care)<br />
+            • Rule of thumb: emergencies – dial <strong>112</strong> or <strong>999</strong> in the UK &amp; EU
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- HOME & MEMORY: RECIPES + PHOTOS -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Home &amp; memory</h2>
+      <div class="pt-grid">
+        <!-- Recipes -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Recipes &amp; meal ideas</div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            Keep your recipes wherever feels natural, then point PlayTriX at them.
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            Ideas:
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            • A Word document in OneDrive called <em>“Family Recipes”</em><br />
+            • A OneNote section just for recipes<br />
+            • A Google Doc or Google Keep list<br />
+            • A Notion database with tags (quick, cheap, freezer-friendly…)
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.6rem;">
+            Then add a tile on the <a href="tools.html" class="pt-nav-link" style="display:inline;">Tools</a> page
+            called <strong>Recipes</strong> and paste the link in. One click, and you’re in your recipe book.
+          </div>
+        </article>
+
+        <!-- Photos -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Photo albums</div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            Same pattern for photos – PlayTriX is the doorway, your cloud is the cupboard.
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            Options:
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            • A shared album in <strong>Google Photos</strong><br />
+            • A <strong>OneDrive</strong> “Pictures” or “Family” folder<br />
+            • An <strong>iCloud</strong> shared album on Apple devices
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.6rem;">
+            Create a tile on the Console or Tools page called <strong>Photo album</strong> and paste the album link.
+            Instant nostalgia button.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- QUIET LEARNING & AI -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Quiet learning &amp; AI helpers</h2>
+      <div class="pt-grid">
+        <!-- Microsoft learning -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Microsoft learning (SharePoint, Teams &amp; more)</div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            A few official places to learn the tools that many workplaces already use:
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            • <a href="https://learn.microsoft.com" target="_blank" rel="noreferrer">Microsoft Learn</a><br />
+            • <a href="https://support.microsoft.com/training" target="_blank" rel="noreferrer">
+                Microsoft 365 training &amp; support
+              </a><br />
+            • <a href="https://support.microsoft.com/sharepoint" target="_blank" rel="noreferrer">
+                SharePoint help &amp; learning
+              </a>
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.6rem;">
+            If you want to get quietly brilliant at SharePoint, Teams or OneDrive, these are good starting points.
+          </div>
+        </article>
+
+        <!-- Google learning -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Google learning</div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            For people who live in Gmail, Drive and Docs:
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            • <a href="https://support.google.com/a/users/answer/9282661" target="_blank" rel="noreferrer">
+                Google Workspace Learning Center
+              </a><br />
+            • <a href="https://workspace.google.com/training/" target="_blank" rel="noreferrer">
+                Workspace training
+              </a>
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.6rem;">
+            A couple of hours here and there turns you into “the person who just knows how to do it”.
+          </div>
+        </article>
+
+        <!-- Other free learning -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Other free learning resources</div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            A few general “level up your brain” places:
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            • <a href="https://www.khanacademy.org" target="_blank" rel="noreferrer">Khan Academy</a><br />
+            • <a href="https://www.freecodecamp.org" target="_blank" rel="noreferrer">freeCodeCamp</a><br />
+            • <a href="https://www.open.edu/openlearn/" target="_blank" rel="noreferrer">OpenLearn (Open University)</a>
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.6rem;">
+            You can create tiles for any of these on the Tools page if you want your OS to nudge you toward learning.
+          </div>
+        </article>
+
+        <!-- AI favourites -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">My favourite AI helpers</div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            Use AI like a smart colleague, not a replacement for your own judgement.
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            • <strong>ChatGPT (“Queen Bob”)</strong> – writing, planning, code, untangling messy thoughts<br />
+            • Microsoft Copilot – integrated with Microsoft 365, good for work documents<br />
+            • Other tools as they appear – always check who made them, what data they keep, and whether you trust that.
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.6rem;">
+            You can pin your preferred AI to the Console (for example: a tile called <strong>Ask Bob</strong>) so
+            help is always one click away.
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="pt-footer">
+    <p>PlayTriX OS · Built with care by Alan Gallagher · No tracking. Your data stays on your device.</p>
+  </footer>
+</body>
+</html>

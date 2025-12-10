@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="now">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlayTriX OS · Console</title>
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="/Assets/playtrix.css" />
+  <link rel="stylesheet" href="/Assets/themes.css" />
+
+  <!-- OS Engine -->
+  <script defer src="Assets/engine.js"></script>
+</head>
+
+<body class="pt-shell">
+
+  <!-- ========================================================= -->
+  <!-- HEADER / TOP BAR                                         -->
+  <!-- ========================================================= -->
+  <header class="pt-header">
+    <div class="pt-header-left">
+      <span class="pt-logo">PlayTriX</span>
+      <span id="pt-greeting" class="pt-greeting">Hello</span>
+    </div>
+
+    <div class="pt-header-middle">
+      <span id="pt-time" class="pt-time">00:00</span>
+      <span id="pt-date" class="pt-date">DD MMM YYYY</span>
+    </div>
+
+    <div class="pt-header-right">
+      <!-- Theme Toggle -->
+      <button id="pt-theme-toggle" class="pt-btn-small">Theme</button>
+
+      <!-- Navigation -->
+      <nav class="pt-nav">
+        <a href="/about.html" class="pt-nav-link">About</a>
+        <a href="/tools.html" class="pt-nav-link">Tools</a>
+        <a href="/browser.html" class="pt-nav-link">Reference</a>
+        <a href="/settings.html" class="pt-nav-link">Settings</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================================= -->
+  <!-- MAIN OS CONSOLE                                           -->
+  <!-- ========================================================= -->
+  <main class="pt-main">
+
+    <!-- Pillars (Work / Civic / Personal / Creative / System) -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Your Pillars</h2>
+
+      <div id="pt-pillars" class="pt-grid">
+        <!-- Dynamic drag-and-drop tools injected by JS -->
+      </div>
+    </section>
+
+    <!-- Favourite Websites -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Favourite Websites</h2>
+
+      <div id="pt-favourites" class="pt-grid">
+        <!-- User-added links -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================= -->
+  <!-- FOOTER                                                   -->
+  <!-- ========================================================= -->
+  <footer class="pt-footer">
+    <p>PlayTriX OS · Built with care by Alan Gallagher · No tracking. Your data stays on your device.</p>
+  </footer>
+
+</body>
+</html>

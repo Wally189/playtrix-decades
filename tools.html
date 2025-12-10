@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="now">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlayTriX OS · Tools</title>
+
+  <link rel="stylesheet" href="/Assets/playtrix.css" />
+  <link rel="stylesheet" href="/Assets/themes.css" />
+  <script defer src="/Assets/engine.js"></script>
+</head>
+
+<body class="pt-shell">
+  <!-- HEADER -->
+  <header class="pt-header">
+    <div class="pt-header-left">
+      <span class="pt-logo">PlayTriX</span>
+      <span id="pt-greeting" class="pt-greeting">Hello</span>
+    </div>
+
+    <div class="pt-header-middle">
+      <span id="pt-time" class="pt-time">00:00</span>
+      <span id="pt-date" class="pt-date">DD MMM YYYY</span>
+    </div>
+
+    <div class="pt-header-right">
+      <button id="pt-theme-toggle" class="pt-btn-small">Now</button>
+
+      <nav class="pt-nav">
+        <a href="/index.html" class="pt-nav-link">Console</a>
+        <a href="/about.html" class="pt-nav-link">About</a>
+        <a href="/tools.html" class="pt-nav-link">Tools</a>
+        <a href="/browser.html" class="pt-nav-link">Reference</a>
+        <a href="/settings.html" class="pt-nav-link">Settings</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="pt-main">
+    <section class="pt-section">
+      <h2 class="pt-section-title">Tool library</h2>
+      <div class="pt-tile">
+        <div class="pt-tile-label">A shelf for the tools you actually use</div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          This page is your “tool cupboard”. It’s not meant to list every app on Earth –
+          just the ones you reach for regularly. Over time you can rename, rearrange or
+          replace these tiles with the exact tools and links that match your own setup.
+        </div>
+      </div>
+    </section>
+
+    <!-- GRID OF TOOL GROUPS -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Tool groups</h2>
+
+      <div class="pt-grid pt-grid--tools">
+
+        <!-- Microsoft -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Microsoft</div>
+          <div class="pt-tile-meta" style="margin-top:0.3rem;">
+            Word · Excel · PowerPoint · Outlook · OneNote · OneDrive · Teams
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            Ideal for: work dashboards, NHS setups, files that live in SharePoint or OneDrive.
+          </div>
+        </article>
+
+        <!-- Google -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Google</div>
+          <div class="pt-tile-meta" style="margin-top:0.3rem;">
+            Gmail · Calendar · Docs · Sheets · Drive · Meet
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            Ideal for: personal life admin, shared documents, simple collaboration spaces.
+          </div>
+        </article>
+
+        <!-- Messaging -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Messaging & calls</div>
+          <div class="pt-tile-meta" style="margin-top:0.3rem;">
+            WhatsApp Web · Signal · Telegram · Teams · Zoom · Meet
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            Keep the services you actually use just one click away – nothing more, nothing less.
+          </div>
+        </article>
+
+        <!-- Productivity -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Productivity & notes</div>
+          <div class="pt-tile-meta" style="margin-top:0.3rem;">
+            Notion · Obsidian · Todoist · Microsoft To Do · Trello · Asana
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            You only need one or two – PlayTriX is here to keep you honest, not multiply apps.
+          </div>
+        </article>
+
+        <!-- Creativity -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Creativity & content</div>
+          <div class="pt-tile-meta" style="margin-top:0.3rem;">
+            Canva · Figma · Adobe Express · Audacity · DaVinci Resolve
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            Shortcuts to the places where you actually make things: graphics, video, layouts, sound.
+          </div>
+        </article>
+
+        <!-- Coding -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Coding & web</div>
+          <div class="pt-tile-meta" style="margin-top:0.3rem;">
+            GitHub · VS Code · CodePen · Stack Overflow
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            Perfect for side projects, experiments and little “OS” ideas of your own.
+          </div>
+        </article>
+
+        <!-- Banking / money -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Banking & money</div>
+          <div class="pt-tile-meta" style="margin-top:0.3rem;">
+            Online banking · budgeting apps · savings dashboards
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            Keep only what you really need quick access to; the console itself should feel calm, not anxious.
+          </div>
+        </article>
+
+        <!-- Faith / community / other -->
+        <article class="pt-tile">
+          <div class="pt-tile-label">Faith, community & other</div>
+          <div class="pt-tile-meta" style="margin-top:0.3rem;">
+            Parish site · diocesan page · volunteering platforms · local forums
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            A quiet place for the things that matter beyond work – parishes, causes, community spaces.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAVOURITE WEBSITES -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Favourite websites</h2>
+      <div class="pt-grid" id="pt-tools-favourites">
+        <article class="pt-tile">
+          <div class="pt-tile-label">Your own favourites</div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            This row is for the sites you go to all the time – the handful that actually matter.
+          </div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            In the full version of PlayTriX you’ll be able to drag links in from your browser,
+            rename the tiles and keep them synced with your backup. For now, think of this
+            as the “starred” section of your Filofax.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="pt-section">
+  <h2 class="pt-section-title">Your own tool groups</h2>
+  <div id="pt-tool-groups-custom" class="pt-grid pt-grid--full"></div>
+</section>
+
+
+    <!-- NOTE -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">How this page fits with the console</h2>
+      <div class="pt-tile">
+        <div class="pt-tile-label">Console = launch pad · Tools = cupboard</div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          The <strong>Console</strong> page is your “today” view – the places you launch from
+          every day. The <strong>Tools</strong> page is where you keep everything tidy in the background.
+        </div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          Over time, you can promote or demote tiles between the two. If something matters
+          every single day, it belongs on the Console. If it’s useful but not constant,
+          it can happily live here.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="pt-footer">
+    <p>PlayTriX OS · Built with care by Alan Gallagher · No tracking. Your data stays on your device.</p>
+  </footer>
+</body>
+</html>

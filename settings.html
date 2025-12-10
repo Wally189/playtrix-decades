@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="now">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlayTriX OS · Settings</title>
+
+  <link rel="stylesheet" href="/Assets/playtrix.css" />
+  <link rel="stylesheet" href="/Assets/themes.css" />
+  <script defer src="/Assets/engine.js"></script>
+</head>
+
+<body class="pt-shell">
+  <!-- HEADER -->
+  <header class="pt-header">
+    <div class="pt-header-left">
+      <span class="pt-logo">PlayTriX</span>
+      <span id="pt-greeting" class="pt-greeting">Hello</span>
+    </div>
+
+    <div class="pt-header-middle">
+      <span id="pt-time" class="pt-time">00:00</span>
+      <span id="pt-date" class="pt-date">DD MMM YYYY</span>
+    </div>
+
+    <div class="pt-header-right">
+      <button id="pt-theme-toggle" class="pt-btn-small">Now</button>
+
+      <nav class="pt-nav">
+        <a href="/index.html" class="pt-nav-link">Console</a>
+        <a href="/about.html" class="pt-nav-link">About</a>
+        <a href="/tools.html" class="pt-nav-link">Tools</a>
+        <a href="/browser.html" class="pt-nav-link">Reference</a>
+        <a href="/settings.html" class="pt-nav-link">Settings</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="pt-main">
+
+    <!-- THEME SECTION -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Themes</h2>
+
+      <div class="pt-grid">
+        <article class="pt-tile">
+          <div class="pt-tile-label">Now</div>
+          <div class="pt-tile-meta">Modern neutral OS</div>
+        </article>
+
+        <article class="pt-tile">
+          <div class="pt-tile-label">1950s</div>
+          <div class="pt-tile-meta">Pastel diner vibes</div>
+        </article>
+
+        <article class="pt-tile">
+          <div class="pt-tile-label">1960s</div>
+          <div class="pt-tile-meta">Bold Mod palette</div>
+        </article>
+
+        <article class="pt-tile">
+          <div class="pt-tile-label">1970s</div>
+          <div class="pt-tile-meta">Earth tones & tan</div>
+        </article>
+
+        <article class="pt-tile">
+          <div class="pt-tile-label">1980s</div>
+          <div class="pt-tile-meta">Soft Pastel 80s</div>
+        </article>
+
+        <article class="pt-tile">
+          <div class="pt-tile-label">1990s</div>
+          <div class="pt-tile-meta">Windows Classic vibes</div>
+        </article>
+
+        <article class="pt-tile">
+          <div class="pt-tile-label">2000s</div>
+          <div class="pt-tile-meta">Aqua / XP glass</div>
+        </article>
+
+        <article class="pt-tile">
+          <div class="pt-tile-label">2010s</div>
+          <div class="pt-tile-meta">Material flat design</div>
+        </article>
+      </div>
+
+      <div class="pt-tile" style="margin-top:1rem;">
+        <div class="pt-tile-label">How to switch themes</div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          Tap the <strong>Theme</strong> button in the top-right of any page to cycle through themes.
+        </div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          Your choice is saved automatically, so PlayTriX always opens with your favourite decade.
+        </div>
+      </div>
+    </section>
+
+    <!-- BACKUP SECTION -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Backup tools</h2>
+
+      <div class="pt-grid">
+        <article class="pt-tile">
+          <div class="pt-tile-label">Export setup</div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            Save your PlayTriX configuration as a file on your device.
+          </div>
+        </article>
+
+        <article class="pt-tile">
+          <div class="pt-tile-label">Import setup</div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            Restore a saved configuration from a file.
+          </div>
+        </article>
+
+        <article class="pt-tile">
+          <div class="pt-tile-label">Copy backup as text</div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            Gets a long encoded string you can paste into Notes.
+          </div>
+        </article>
+
+        <article class="pt-tile">
+          <div class="pt-tile-label">Restore from text</div>
+          <div class="pt-tile-meta" style="margin-top:0.4rem;">
+            Paste the backup string here to rebuild your console.
+          </div>
+        </article>
+      </div>
+
+      <div class="pt-tile" style="margin-top:1rem;">
+        <div class="pt-tile-label">Why backups matter</div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          Browsers erase stored data when you clear history or switch devices.  
+          Backups make your PlayTriX console portable and future-proof.
+        </div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          No data ever leaves your device – backups belong entirely to you.
+        </div>
+      </div>
+    </section>
+
+    <!-- RESET SECTION -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Reset</h2>
+
+      <div class="pt-tile">
+        <div class="pt-tile-label">Reset PlayTriX</div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          Clears all saved tiles, themes, favourites and settings.
+        </div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          You can restore from a backup afterwards.
+        </div>
+      </div>
+    </section>
+
+    <!-- PASSWORD AREA (UI placeholder) -->
+    <section class="pt-section">
+      <h2 class="pt-section-title">Security</h2>
+
+      <div class="pt-tile">
+        <div class="pt-tile-label">Password lock</div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          The lock screen is not a replacement for your device password –  
+          it simply keeps your console private if someone else opens PlayTriX.
+        </div>
+        <div class="pt-tile-meta" style="margin-top:0.4rem;">
+          Password setup and removal lives on the dedicated <strong>Password</strong> page.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="pt-footer">
+    <p>PlayTriX OS · Built with care by Alan Gallagher · No tracking. Your data stays on your device.</p>
+  </footer>
+</body>
+</html>
