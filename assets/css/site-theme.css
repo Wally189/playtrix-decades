@@ -1,0 +1,20 @@
+:root {
+  --wl-accent: #a2643a;
+  --wl-accent-soft: rgba(162, 100, 58, 0.12);
+  --pt-bg: var(--wl-paper);
+  --pt-bg-grad: none;
+  --pt-surface: #ffffff;
+  --pt-surface-soft: #ffffff;
+  --pt-border: var(--wl-rule);
+  --pt-border-strong: var(--wl-rule);
+  --pt-text-main: var(--wl-ink);
+  --pt-text-soft: var(--wl-muted);
+  --pt-text-muted: var(--wl-muted);
+  --pt-accent: var(--wl-accent);
+  --pt-accent-soft: var(--wl-accent-soft);
+  --pt-radius-large: 18px;
+  --pt-radius-medium: 12px;
+  --pt-radius-pill: 999px;
+  --pt-shadow-soft: var(--wl-shadow);
+  --pt-shadow-light: var(--wl-shadow);
+}
