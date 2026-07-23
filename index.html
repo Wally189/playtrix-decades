@@ -3,111 +3,56 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#8a5a32">
-  <title>Playtrix · Personal Filofax</title>
+  <meta name="theme-color" content="#315f91">
+  <title>Playtrix · Personal Operating Desk</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="topbar">
-    <div>
-      <p class="eyebrow">Personal operating desk</p>
-      <h1>Playtrix</h1>
-      <p class="strap">Keep the day ordered and small.</p>
-    </div>
-    <button class="capture-button" id="captureButton">+ Capture</button>
-  </header>
+  <aside class="desk-menu">
+    <div class="menu-brand"><p>Personal operating desk</p><h1>Playtrix</h1><span>Keep the day ordered and small.</span></div>
+    <nav id="mainNav">
+      <button class="nav-item active" data-view="front"><span>00</span> Front cover</button>
+      <button class="nav-item" data-view="vocation"><span>01</span> Vocation & Work</button>
+      <button class="nav-item" data-view="formation"><span>02</span> Faith & Formation</button>
+      <button class="nav-item" data-view="stewardship"><span>03</span> Household & Stewardship</button>
+      <button class="nav-item" data-view="community"><span>04</span> Community & Relationship</button>
+      <button class="nav-item" data-view="renewal"><span>05</span> Rest & Renewal</button>
+      <button class="nav-item" data-view="health"><span>06</span> Health & Personal</button>
+    </nav>
+    <div class="menu-tools"><button id="captureButton">+ Capture</button><button data-view="review">Weekly review</button><button data-view="tools">Open desks</button></div>
+    <p class="menu-foot">Inspired by St Joseph the Worker.<br>Ordered beneath Our Lady's blue.</p>
+  </aside>
 
-  <nav class="tabs" aria-label="Playtrix sections">
-    <button class="tab active" data-view="front">Front cover</button>
-    <button class="tab" data-view="vocation">01 Vocation</button>
-    <button class="tab" data-view="formation">02 Formation</button>
-    <button class="tab" data-view="stewardship">03 Stewardship</button>
-    <button class="tab" data-view="community">04 Community</button>
-    <button class="tab" data-view="renewal">05 Renewal</button>
-    <button class="tab" data-view="health">06 Health</button>
-  </nav>
+  <header class="mobile-head"><div><small>Personal operating desk</small><strong>Playtrix</strong></div><button id="mobileCapture">+ Capture</button></header>
+  <nav class="mobile-tabs"><button class="active" data-view="front">Cover</button><button data-view="vocation">01</button><button data-view="formation">02</button><button data-view="stewardship">03</button><button data-view="community">04</button><button data-view="renewal">05</button><button data-view="health">06</button><button data-view="review">Review</button><button data-view="tools">Desks</button></nav>
 
-  <main>
+  <main class="desk-content">
     <section class="view active" id="front">
-      <div class="hero-grid">
-        <article class="card position-card">
-          <p class="eyebrow">Today</p>
-          <h2 id="todayHeading">Today</h2>
-          <textarea id="principalFocus" rows="3" placeholder="What is the principal focus today?"></textarea>
-          <div class="three-list" id="todayList"></div>
-        </article>
-        <article class="card quiet-card">
-          <p class="eyebrow">In view</p>
-          <div class="signal"><span>Nearest deadline</span><strong id="nearestDeadline">Not set</strong></div>
-          <div class="signal"><span>Waiting</span><strong id="waitingCount">0</strong></div>
-          <div class="signal"><span>Inbox</span><strong id="inboxCount">0</strong></div>
-        </article>
-      </div>
-
-      <section class="section-grid" id="sectionCards"></section>
-
-      <article class="card launcher-card">
-        <div class="card-heading">
-          <div><p class="eyebrow">Open the right place</p><h2>External desks</h2></div>
-          <p class="muted">Use the viewer when a service permits it; otherwise Playtrix opens the secure native app.</p>
-        </div>
-        <div class="launcher-grid" id="launcherGrid"></div>
-      </article>
+      <header class="page-head"><p class="kicker">Front cover</p><h2 id="todayHeading">Today</h2><p>Decide what deserves attention. Let everything else wait in its proper place.</p></header>
+      <section class="today-sheet"><div class="focus-block"><label for="principalFocus">Principal focus</label><textarea id="principalFocus" rows="2" placeholder="What matters most today?"></textarea></div><div class="today-outcomes" id="todayList"></div></section>
+      <section class="status-strip"><div><small>Nearest deadline</small><strong id="nearestDeadline">Not set</strong></div><div><small>Waiting</small><strong id="waitingCount">0</strong></div><div><small>Inbox</small><strong id="inboxCount">0</strong></div><div><small>Active sections</small><strong id="activeCount">0</strong></div></section>
+      <section class="front-columns"><div><div class="section-heading"><p class="kicker">The six divisions</p><h3>Flip to the right part of life</h3></div><div class="section-index" id="sectionCards"></div></div><aside class="inbox-sheet"><div class="section-heading"><p class="kicker">Unsorted</p><h3>Capture inbox</h3></div><div id="inboxList" class="plain-list"></div><button class="text-button" id="clearInbox">Clear completed</button></aside></section>
     </section>
 
     <section class="view" id="sectionView">
-      <button class="back-button" id="backButton">← Front cover</button>
-      <div class="section-title">
-        <p class="eyebrow" id="sectionNumber"></p>
-        <h2 id="sectionName"></h2>
-        <p id="sectionPurpose" class="muted"></p>
-      </div>
-      <div class="section-layout">
-        <article class="card">
-          <p class="eyebrow">Current position</p>
-          <textarea id="sectionPosition" rows="5" placeholder="Where does this part of life currently stand?"></textarea>
-        </article>
-        <article class="card">
-          <p class="eyebrow">Next actions</p>
-          <div id="sectionActions"></div>
-          <button class="small-button" id="addAction">+ Add action</button>
-        </article>
-        <article class="card">
-          <p class="eyebrow">Waiting for</p>
-          <div id="sectionWaiting"></div>
-          <button class="small-button" id="addWaiting">+ Add waiting item</button>
-        </article>
-        <article class="card">
-          <p class="eyebrow">Folders and tools</p>
-          <div class="link-list" id="sectionLinks"></div>
-          <button class="small-button" id="addLink">+ Add link</button>
-        </article>
+      <header class="page-head section-page-head"><p class="kicker" id="sectionNumber"></p><h2 id="sectionName"></h2><p id="sectionPurpose"></p></header>
+      <div class="section-sheet">
+        <section class="position-line"><label for="sectionPosition">Current position</label><textarea id="sectionPosition" rows="3" placeholder="A short statement of where this part of life currently stands."></textarea></section>
+        <div class="register-grid">
+          <section class="register"><header><div><p class="kicker">Do</p><h3>Next actions</h3></div><button id="addAction">+ Add</button></header><div id="sectionActions" class="plain-list"></div></section>
+          <section class="register"><header><div><p class="kicker">Await</p><h3>Waiting for</h3></div><button id="addWaiting">+ Add</button></header><div id="sectionWaiting" class="plain-list"></div></section>
+          <section class="register"><header><div><p class="kicker">Open</p><h3>Folders and tools</h3></div><button id="addLink">+ Add</button></header><div id="sectionLinks" class="plain-list link-list"></div></section>
+          <section class="register"><header><div><p class="kicker">Later</p><h3>Backlog</h3></div><button id="addBacklog">+ Add</button></header><div id="sectionBacklog" class="plain-list"></div></section>
+        </div>
       </div>
     </section>
 
-    <section class="view" id="viewerView">
-      <div class="viewer-head">
-        <button class="back-button" id="viewerBack">← Back</button>
-        <div><p class="eyebrow">Workspace viewer</p><h2 id="viewerTitle">External tool</h2></div>
-        <a id="viewerExternal" class="small-button" target="_blank" rel="noopener">Open separately</a>
-      </div>
-      <div class="embed-note">Some secure services, including Gmail, Drive and Microsoft 365, may refuse to display inside another website. That is a security restriction, not a Playtrix fault.</div>
-      <iframe id="viewerFrame" title="External workspace"></iframe>
-    </section>
+    <section class="view" id="review"><header class="page-head"><p class="kicker">Weekly review</p><h2>Restore order</h2><p>A short review, not another project.</p></header><ol class="review-list"><li><strong>Empty the inbox.</strong><span>File, act, schedule, defer or delete each capture.</span></li><li><strong>Check dates.</strong><span>Review the next fortnight for commitments and deadlines.</span></li><li><strong>Review waiting.</strong><span>Chase only what genuinely needs chasing.</span></li><li><strong>Close and pause.</strong><span>Mark completed work and deliberately pause what is not current.</span></li><li><strong>Choose the week.</strong><span>Name no more than three principal outcomes.</span></li></ol><label class="review-note">Weekly note<textarea id="weeklyNote" rows="8" placeholder="What is going well? What is out of order? What changes next week?"></textarea></label></section>
+
+    <section class="view" id="tools"><header class="page-head"><p class="kicker">Open desks</p><h2>The material stays where it belongs</h2><p>Playtrix provides the route; Drive, mail, calendar and repositories retain the actual records.</p></header><div class="tool-directory" id="launcherGrid"></div><div class="viewer-panel" id="viewerPanel" hidden><header><div><p class="kicker">Workspace viewer</p><h3 id="viewerTitle"></h3></div><a id="viewerExternal" target="_blank" rel="noopener">Open separately</a></header><p>Some secure services refuse to display inside another site. Use “open separately” when that happens.</p><iframe id="viewerFrame" title="External workspace"></iframe></div></section>
   </main>
 
-  <dialog id="captureDialog">
-    <form method="dialog" id="captureForm">
-      <div class="dialog-head"><h2>Capture</h2><button value="cancel" aria-label="Close">×</button></div>
-      <label>Thought, task or reminder<textarea id="captureText" required rows="5"></textarea></label>
-      <label>Section<select id="captureSection"></select></label>
-      <div class="dialog-actions"><button value="cancel" class="secondary">Cancel</button><button value="default" id="saveCapture">Save to inbox</button></div>
-    </form>
-  </dialog>
-
-  <footer>
-    <p>Playtrix · a quiet personal Filofax inspired by St Joseph the Worker.</p>
-  </footer>
+  <dialog id="captureDialog"><form method="dialog" id="captureForm"><div class="dialog-head"><h2>Capture</h2><button value="cancel" aria-label="Close">×</button></div><label>Thought, task or reminder<textarea id="captureText" required rows="5"></textarea></label><label>Section<select id="captureSection"></select></label><div class="dialog-actions"><button value="cancel" class="secondary">Cancel</button><button value="default" id="saveCapture">Save</button></div></form></dialog>
   <script src="app.js"></script>
 </body>
 </html>
