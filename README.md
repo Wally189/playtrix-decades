@@ -1,59 +1,21 @@
-# Waylight-Playtrix
+# Playtrix
 
-Waylight-Playtrix is a static internal operating console for a solo business and its companion personal desk.
+Playtrix is a private personal Filofax-style front door for work, formation, stewardship, relationships, renewal and health.
 
-## Live structure
+It does not duplicate documents or correspondence. It records position, next actions and waiting items, then links to the secure external services where the real material lives.
 
-- `index.html`
-  Redirect entry point to the business Front Desk.
-- `playtrix-console.html`
-  Main business Front Desk and working surface.
-- `playtrix-focus.html`
-  Shared focused-page shell for smaller subject pages across Workbench, Governance, Finance, and Library.
-- `tools.html`
-  Tools Deck launcher.
-- `contacts.html`
-  Contact register.
-- `analytics.html`
-  Simple business analytics view.
-- `governance-calendar.html`
-  Full governance calendar rendered from shared governance data.
-- `personal-console.html`
-  Personal companion console.
-- `privacy.html`, `gdpr.html`, `terms.html`
-  Waylight Atlantic legal/editorial pages.
+## Live files
 
-## Shared app files
+- `index.html` — application shell
+- `styles.css` — St Joseph the Worker-inspired timber, ochre and olive visual system
+- `app.js` — local browser storage, navigation, capture and external workspace launcher
 
-- `Assets/js/playtrix-storage.js`
-  Shared localStorage helpers.
-- `Assets/js/playtrix-governance.js`
-  Canonical governance rhythm and shared timing logic.
-- `Assets/js/playtrix-common.js`
-  Shared footer/time helpers.
-- `Assets/js/playtrix-shell.js`
-  Shared grouped navigation.
-- `Assets/js/playtrix-organiser.js`
-  Shared registers, analytics, pressure view, and supporting business panels.
-- `Assets/js/playtrix-kanban.js`
-  Drag-and-drop workboard.
-- `Assets/js/playtrix-tools.js`
-  Tools Deck interactions.
-- `Assets/css/playtrix-filofax.css`
-  Shared Waylight-Playtrix visual system.
-- `Assets/css/playtrix-kanban.css`
-  Workboard styling.
+## Archive
 
-## Important rule
+The previous Waylight-Playtrix implementation is preserved on branch:
 
-The governance rhythm is a protected backbone. If you change it, update shared governance data in `Assets/js/playtrix-governance.js` rather than editing page copies.
+`archive/playtrix-pre-helm-2026-07-23`
 
-## Current direction
+## Privacy
 
-The system is being refactored away from page-local logic toward:
-
-- one shared navigation shell
-- one shared focused-page shell for split subject views
-- one shared governance source
-- one shared storage layer
-- derived front-desk summaries rather than duplicated manual panels
+Operational notes are stored in the browser's localStorage. Do not place passwords or highly sensitive evidence in the repository. External services may block iframe display for security; use the supplied **Open app** fallback.

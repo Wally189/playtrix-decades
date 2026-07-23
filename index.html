@@ -1,125 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Waylight-Playtrix | Opening Front Desk</title>
-  <meta http-equiv="refresh" content="0; url=playtrix-console.html#overview" />
-  <link rel="icon" href="Assets/img/irish-cross.svg" type="image/svg+xml" />
-  <style>
-    :root {
-      --accent: #2d5fa8;
-      --accent-dark: #1f3f73;
-      --text: #1f2d3d;
-      --muted: #5f7ea6;
-      --panel: rgba(255, 255, 255, 0.94);
-      --line: rgba(45, 95, 168, 0.16);
-      --shadow: 0 24px 56px rgba(31, 63, 115, 0.14);
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 1rem;
-      color: var(--text);
-      font-family: "Trebuchet MS", "Gill Sans", Calibri, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(143, 183, 223, 0.24), transparent 24%),
-        radial-gradient(circle at top right, rgba(45, 95, 168, 0.16), transparent 24%),
-        linear-gradient(180deg, #eef5fb, #dfeef8 58%, #f9fbfd);
-    }
-    .redirect-card {
-      width: min(680px, calc(100% - 2rem));
-      padding: 2rem 2.1rem;
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      background: var(--panel);
-      box-shadow: var(--shadow);
-      text-align: left;
-    }
-    .eyebrow {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-    .redirect-card h1 {
-      margin: 0.2rem 0 0.8rem;
-      color: var(--accent);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2rem, 5vw, 3rem);
-      text-transform: uppercase;
-    }
-    .redirect-card p { margin: 0.6rem 0; }
-    .muted { color: var(--muted); }
-    .redirect-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.2rem; }
-    .redirect-link {
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.8rem 0.95rem;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.86);
-      color: var(--text);
-      font-weight: 800;
-      text-decoration: none;
-    }
-    .redirect-link::before {
-      content: "";
-      position: absolute;
-      inset: -1px;
-      border-radius: inherit;
-      background-image: linear-gradient(110deg, transparent 0%, rgba(240, 218, 159, 0.72) 42%, transparent 64%);
-      background-repeat: no-repeat;
-      background-size: 0% 100%;
-      background-position: 115% 0;
-      mix-blend-mode: soft-light;
-      opacity: 0;
-      pointer-events: none;
-      transition: background-size 220ms ease, opacity 170ms ease;
-      z-index: 0;
-    }
-    .redirect-link:hover::before,
-    .redirect-link:focus-visible::before {
-      background-size: 240% 100%;
-      background-position: -35% 0;
-      opacity: 0.46;
-      animation: redirect-link-shimmer 620ms ease-out 1;
-    }
-    .redirect-link.primary {
-      background: linear-gradient(135deg, var(--accent-dark), var(--accent));
-      border-color: transparent;
-      color: #fff;
-    }
-    @keyframes redirect-link-shimmer {
-      from { background-position: 115% 0; }
-      to { background-position: -35% 0; }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#8a5a32">
+  <title>Playtrix · Personal Filofax</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="redirect-card" aria-live="polite">
-    <p class="eyebrow">Waylight-Playtrix</p>
-    <h1>Opening Front Desk</h1>
-    <p class="muted">Playtrix - the Business and Personal Console</p>
-    <div class="redirect-actions">
-      <a class="redirect-link primary" href="playtrix-console.html#overview">Open Front Desk</a>
-      <a class="redirect-link" href="personal-console.html">Waylight Personal Console</a>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Personal operating desk</p>
+      <h1>Playtrix</h1>
+      <p class="strap">Keep the day ordered and small.</p>
     </div>
-    <noscript>
-      <p class="muted">If the redirect does not run, use the Front Desk button above.</p>
-    </noscript>
+    <button class="capture-button" id="captureButton">+ Capture</button>
+  </header>
+
+  <nav class="tabs" aria-label="Playtrix sections">
+    <button class="tab active" data-view="front">Front cover</button>
+    <button class="tab" data-view="vocation">01 Vocation</button>
+    <button class="tab" data-view="formation">02 Formation</button>
+    <button class="tab" data-view="stewardship">03 Stewardship</button>
+    <button class="tab" data-view="community">04 Community</button>
+    <button class="tab" data-view="renewal">05 Renewal</button>
+    <button class="tab" data-view="health">06 Health</button>
+  </nav>
+
+  <main>
+    <section class="view active" id="front">
+      <div class="hero-grid">
+        <article class="card position-card">
+          <p class="eyebrow">Today</p>
+          <h2 id="todayHeading">Today</h2>
+          <textarea id="principalFocus" rows="3" placeholder="What is the principal focus today?"></textarea>
+          <div class="three-list" id="todayList"></div>
+        </article>
+        <article class="card quiet-card">
+          <p class="eyebrow">In view</p>
+          <div class="signal"><span>Nearest deadline</span><strong id="nearestDeadline">Not set</strong></div>
+          <div class="signal"><span>Waiting</span><strong id="waitingCount">0</strong></div>
+          <div class="signal"><span>Inbox</span><strong id="inboxCount">0</strong></div>
+        </article>
+      </div>
+
+      <section class="section-grid" id="sectionCards"></section>
+
+      <article class="card launcher-card">
+        <div class="card-heading">
+          <div><p class="eyebrow">Open the right place</p><h2>External desks</h2></div>
+          <p class="muted">Use the viewer when a service permits it; otherwise Playtrix opens the secure native app.</p>
+        </div>
+        <div class="launcher-grid" id="launcherGrid"></div>
+      </article>
+    </section>
+
+    <section class="view" id="sectionView">
+      <button class="back-button" id="backButton">← Front cover</button>
+      <div class="section-title">
+        <p class="eyebrow" id="sectionNumber"></p>
+        <h2 id="sectionName"></h2>
+        <p id="sectionPurpose" class="muted"></p>
+      </div>
+      <div class="section-layout">
+        <article class="card">
+          <p class="eyebrow">Current position</p>
+          <textarea id="sectionPosition" rows="5" placeholder="Where does this part of life currently stand?"></textarea>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Next actions</p>
+          <div id="sectionActions"></div>
+          <button class="small-button" id="addAction">+ Add action</button>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Waiting for</p>
+          <div id="sectionWaiting"></div>
+          <button class="small-button" id="addWaiting">+ Add waiting item</button>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Folders and tools</p>
+          <div class="link-list" id="sectionLinks"></div>
+          <button class="small-button" id="addLink">+ Add link</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="view" id="viewerView">
+      <div class="viewer-head">
+        <button class="back-button" id="viewerBack">← Back</button>
+        <div><p class="eyebrow">Workspace viewer</p><h2 id="viewerTitle">External tool</h2></div>
+        <a id="viewerExternal" class="small-button" target="_blank" rel="noopener">Open separately</a>
+      </div>
+      <div class="embed-note">Some secure services, including Gmail, Drive and Microsoft 365, may refuse to display inside another website. That is a security restriction, not a Playtrix fault.</div>
+      <iframe id="viewerFrame" title="External workspace"></iframe>
+    </section>
   </main>
-  <script>
-    window.location.replace('playtrix-console.html#overview');
-  </script>
+
+  <dialog id="captureDialog">
+    <form method="dialog" id="captureForm">
+      <div class="dialog-head"><h2>Capture</h2><button value="cancel" aria-label="Close">×</button></div>
+      <label>Thought, task or reminder<textarea id="captureText" required rows="5"></textarea></label>
+      <label>Section<select id="captureSection"></select></label>
+      <div class="dialog-actions"><button value="cancel" class="secondary">Cancel</button><button value="default" id="saveCapture">Save to inbox</button></div>
+    </form>
+  </dialog>
+
+  <footer>
+    <p>Playtrix · a quiet personal Filofax inspired by St Joseph the Worker.</p>
+  </footer>
+  <script src="app.js"></script>
 </body>
 </html>
