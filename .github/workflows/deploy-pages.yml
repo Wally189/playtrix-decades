@@ -36,11 +36,7 @@ jobs:
                   if value:
                       if value in ids: duplicates.add(value)
                       ids.add(value)
-          html=Path("index.html").read_text(encoding="utf-8")
-          js=Path("recovery.js").read_text(encoding="utf-8")
-          css=Path("styles.css").read_text(encoding="utf-8")
-          readme=Path("README.md").read_text(encoding="utf-8")
-          Parser().feed(html)
+          html=Path("index.html").read_text(encoding="utf-8");js=Path("recovery.js").read_text(encoding="utf-8");css=Path("styles.css").read_text(encoding="utf-8");readme=Path("README.md").read_text(encoding="utf-8");Parser().feed(html)
           missing=required-ids
           if duplicates: raise SystemExit(f"Duplicate HTML ids: {sorted(duplicates)}")
           if missing: raise SystemExit(f"Missing required product surfaces: {sorted(missing)}")
@@ -50,11 +46,9 @@ jobs:
           current=html+"\n"+js+"\n"+css+"\n"+readme
           if re.search(r"[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}",current,re.I): raise SystemExit("Email address present in current product source")
           if re.search(r"https?://(?:docs|drive)\.google\.com/",current,re.I): raise SystemExit("Private-workspace style Google URL present in current product source")
-          legacy_terms=["nbt grievance","weca onboarding","rosary","st joseph prayer"]
-          lowered=current.lower();hits=[term for term in legacy_terms if term in lowered]
+          legacy_terms=["nbt grievance","weca onboarding","rosary","st joseph prayer"];lowered=current.lower();hits=[term for term in legacy_terms if term in lowered]
           if hits: raise SystemExit(f"Legacy fixture terms present in current product: {hits}")
           print("Static Playtrix checks passed")
-
   deploy:
     if: github.ref == 'refs/heads/main'
     needs: test
