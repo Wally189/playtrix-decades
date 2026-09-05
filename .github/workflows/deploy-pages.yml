@@ -1,91 +1,96 @@
-name: Patch and test Playtrix P0 follow-up
+name: Test and deploy Playtrix
 
 on:
   push:
-    branches: ["hoc-playtrix-p0-remediation-20260905"]
+    branches: ["main", "hoc-playtrix-p0-remediation-20260905"]
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: playtrix-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  patch-and-test:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout remediation branch
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: hoc-playtrix-p0-remediation-20260905
-
-      - name: Apply bounded P0 follow-up patch
-        shell: python
-        run: |
-          from pathlib import Path
-
-          js = Path("recovery.js")
-          s = js.read_text(encoding="utf-8")
-          old = "if(old){const parsed=JSON.parse(old);if(parsed&&parsed.version===2){st=migrateV2(parsed);if(save()){status('Playtrix upgraded your existing v2 organiser to the current data model. Export a fresh backup from Settings.');}return}}"
-          new = "if(old){const parsed=JSON.parse(old);if(parsed&&parsed.version===2){st=migrateV2(parsed);if(save()){localStorage.removeItem(PREVIOUS_KEY);status('Playtrix upgraded your existing v2 organiser to the current data model. Export a fresh backup from Settings.');}return}}"
-          if old in s:
-              s = s.replace(old, new)
-          elif "localStorage.removeItem(PREVIOUS_KEY);status('Playtrix upgraded" not in s:
-              raise SystemExit("Expected v2 migration block not found")
-
-          old = "try{localStorage.removeItem(KEY);st=blank();renderAll();status('Local organiser data reset.')}catch(e)"
-          new = "try{localStorage.removeItem(KEY);localStorage.removeItem(PREVIOUS_KEY);st=blank();renderAll();status('Local organiser data reset.')}catch(e)"
-          if old in s:
-              s = s.replace(old, new)
-          elif "localStorage.removeItem(KEY);localStorage.removeItem(PREVIOUS_KEY);st=blank()" not in s:
-              raise SystemExit("Expected reset block not found")
-
-          s = s.replace("q('#dayClose').classList.remove('hidden');q('#dayClose').querySelector('select, input, button')?.focus()", "q('#dayClose').showModal();q('#dayClose').querySelector('select, input, button')?.focus()")
-          s = s.replace("q('#returnDashboard').onclick=()=>q('#dayClose').classList.add('hidden');", "q('#returnDashboard').onclick=()=>q('#dayClose').close();")
-          s = s.replace("q('#dayClose').classList.add('hidden');renderAll();status('Day closed deliberately.", "q('#dayClose').close();renderAll();status('Day closed deliberately.")
-          js.write_text(s, encoding="utf-8")
-
-          html = Path("index.html")
-          h = html.read_text(encoding="utf-8")
-          h = h.replace('<section id="dayClose" class="day-close hidden" aria-labelledby="dayCloseTitle">', '<dialog id="dayClose" class="day-close" aria-labelledby="dayCloseTitle">')
-          h = h.replace('</section>\n<script src="recovery.js?v=20260905-2"></script>', '</dialog>\n<script src="recovery.js?v=20260905-3"></script>')
-          h = h.replace('styles.css?v=20260905-2', 'styles.css?v=20260905-3')
-          if '<dialog id="dayClose"' not in h:
-              raise SystemExit("Day-close dialog conversion failed")
-          html.write_text(h, encoding="utf-8")
 
       - name: JavaScript syntax check
         run: node --check recovery.js
 
-      - name: Static acceptance checks
+      - name: Static product safety check
         shell: python
         run: |
           from html.parser import HTMLParser
           from pathlib import Path
-          html = Path('index.html').read_text(encoding='utf-8')
-          js = Path('recovery.js').read_text(encoding='utf-8')
-          ids=[]
-          class P(HTMLParser):
-              def handle_starttag(self, tag, attrs):
-                  d=dict(attrs)
-                  if d.get('id'): ids.append(d['id'])
-          P().feed(html)
-          if len(ids) != len(set(ids)):
-              raise SystemExit('Duplicate ids detected')
-          if '<dialog id="dayClose"' not in html:
-              raise SystemExit('Day close is not a native dialog')
-          if "localStorage.removeItem(PREVIOUS_KEY)" not in js:
-              raise SystemExit('Previous-key cleanup missing')
-          if "localStorage.removeItem(KEY);localStorage.removeItem(PREVIOUS_KEY)" not in js:
-              raise SystemExit('Reset resurrection repair missing')
-          print('P0 follow-up checks passed')
 
-      - name: Commit P0 follow-up if changed
-        run: |
-          if git diff --quiet; then
-            echo "No patch changes required"
-            exit 0
-          fi
-          git config user.name "Alan Gallagher"
-          git config user.email "53058801+Wally189@users.noreply.github.com"
-          git add index.html recovery.js
-          git commit -m "Close reset resurrection and day-close focus defects"
-          git push origin HEAD:hoc-playtrix-p0-remediation-20260905
+          required = {
+              "today", "inbox", "tasks", "projects", "waiting", "notes",
+              "notyet", "tools", "review", "settings", "captureDialog",
+              "editDialog", "dayClose"
+          }
+          ids = set()
+          duplicates = set()
+
+          class Parser(HTMLParser):
+              def handle_starttag(self, tag, attrs):
+                  data = dict(attrs)
+                  value = data.get("id")
+                  if value:
+                      if value in ids:
+                          duplicates.add(value)
+                      ids.add(value)
+
+          html = Path("index.html").read_text(encoding="utf-8")
+          js = Path("recovery.js").read_text(encoding="utf-8")
+          readme = Path("README.md").read_text(encoding="utf-8")
+          Parser().feed(html)
+
+          missing = required - ids
+          if duplicates:
+              raise SystemExit(f"Duplicate HTML ids: {sorted(duplicates)}")
+          if missing:
+              raise SystemExit(f"Missing required product surfaces: {sorted(missing)}")
+          if '<dialog id="dayClose"' not in html:
+              raise SystemExit("Day-close interaction must use a native dialog")
+          if "localStorage.removeItem(KEY);localStorage.removeItem(PREVIOUS_KEY)" not in js:
+              raise SystemExit("Reset must clear the previous migration source")
+
+          current = (html + "\n" + js + "\n" + readme).lower()
+          forbidden_current = [
+              "alanwgallagher1@gmail.com", "alanwgallagher1@outlook.com",
+              "nbt grievance", "weca onboarding", "rosary", "st joseph prayer"
+          ]
+          hits = [term for term in forbidden_current if term in current]
+          if hits:
+              raise SystemExit(f"Private/legacy fixture terms present in current product: {hits}")
+
+          print("Static Playtrix checks passed")
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: test
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
