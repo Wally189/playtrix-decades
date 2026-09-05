@@ -1,8 +1,8 @@
-name: Deploy Playtrix to GitHub Pages
+name: Test and deploy Playtrix
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "hoc-playtrix-p0-remediation-20260905"]
   workflow_dispatch:
 
 permissions:
@@ -11,14 +11,11 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: playtrix-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -72,6 +69,16 @@ jobs:
 
           print("Static Playtrix checks passed")
 
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: test
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
