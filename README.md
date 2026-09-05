@@ -1,33 +1,37 @@
 # Playtrix
 
-Playtrix is a calm, local-first digital personal organiser for capturing commitments, organising tasks and projects, keeping waiting items and ideas visible, and reviewing what matters without turning everything into a task.
+Playtrix is a calm browser-local personal organiser for capturing commitments, organising tasks and projects, keeping waiting items and ideas visible, storing reference notes, and deciding what is enough for today.
 
 ## Current product model
 
-- **Today** — a bounded daily focus with an explicit “Enough for today” stopping condition.
-- **Tasks** — first-class actionable commitments.
-- **Projects** — outcomes kept separate from individual tasks.
-- **Waiting** — dependencies that are not actionable yet.
-- **Not Yet** — possibilities without obligation.
-- **Tools** — a user-created directory of useful links.
-- **Review** — a simple weekly clarity check.
-- **Settings** — JSON export/import and local reset.
+- **Today** — bounded daily focus with an explicit **Enough for today** stopping condition and deliberate end-of-day disposition.
+- **Inbox** — unprocessed captures that can be clarified later.
+- **Tasks** — actionable commitments with optional project, due date and review date.
+- **Projects** — outcomes with purpose, current position, next action, dependencies, review trigger and **Enough for now**.
+- **Waiting** — dependencies with optional project and follow-up/review dates.
+- **Notes** — retrievable reference information that is not an action.
+- **Not Yet** — possibilities without obligation, including promotion to task/project when deliberately chosen.
+- **Tools** — a user-created directory of http/https links.
+- **Review** — a weekly clarity check that surfaces unprocessed, stale or incomplete states.
+- **Settings** — version information plus JSON export/import and local reset.
 
 ## Privacy and data
 
-Playtrix v2 is local-first. Organiser data is stored in the browser using `localStorage` and is not synchronised to a Playtrix cloud service. Browser storage is convenient persistence, not a secure vault or guaranteed backup. Use **Settings → Export backup** before clearing browser data or moving device.
+Playtrix stores organiser data in the browser using `localStorage`. It does **not** currently provide a Playtrix cloud account, cross-device sync, encrypted vault storage or guaranteed backup. Clearing browser/site data can remove organiser data. Use **Settings → Export backup** before clearing browser data or changing device.
 
-The public repository must contain no real user's private operational data, credentials, personal task records or private workspace identifiers. The organiser starts empty rather than shipping real-user examples.
+The application validates current backups before import, limits import size, and can migrate the previous `playtrix.organiser.v2` data model into the current v3 model. It does not automatically import older prototype storage keys because those earlier prototypes contained owner-specific fixture data that cannot be reliably distinguished from genuine user-created content.
+
+The public current branch must contain no real user's private operational data, credentials, personal task records or private workspace identifiers. The organiser starts empty.
 
 ## Files
 
 - `index.html` — current secular application shell.
-- `recovery.js` — current v2 local data model and organiser behaviour.
-- `styles.css` — responsive visual system.
+- `recovery.js` — current v3 browser-local data model and organiser behaviour.
+- `styles.css` — responsive and keyboard-focus visual system.
 - `.github/workflows/deploy-pages.yml` — GitHub Pages deployment workflow.
 
-The obsolete `app.js` prototype was removed from the current branch because it contained historic personal seed data and religious prototype content. Historical provenance remains available through Git version history and controlled project records.
+The obsolete personalised prototype is not part of current `main`. Git history remains historical provenance and is not the current product runtime.
 
 ## Product boundary
 
-The current version does not claim cloud sync, accounts, encrypted storage, automatic backup, AI assistance or market validation.
+The current build does not claim market validation, productivity or wellbeing outcomes, cloud sync, accounts, automatic remote backup, AI assistance, collaboration or enterprise workflow functionality.
