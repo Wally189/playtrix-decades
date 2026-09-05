@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#24476e">
 <meta name="description" content="Playtrix — a calm browser-local personal organiser for commitments, projects, waiting items, ideas and notes.">
 <title>Playtrix · Personal organiser</title>
-<link rel="stylesheet" href="styles.css?v=20260905-2">
+<link rel="stylesheet" href="styles.css?v=20260905-3">
 </head>
 <body>
 <a class="skip-link" href="#mainContent">Skip to organiser</a>
@@ -81,8 +81,8 @@
 
 <dialog id="editDialog"><form method="dialog"><div class="dialog-head"><h3 id="editTitle">Edit item</h3><button value="cancel" aria-label="Close">×</button></div><div id="editFields"></div><div class="dialog-actions"><button value="cancel" class="ghost">Cancel</button><button id="saveEdit" class="primary" type="button">Save</button></div><p class="dialog-status" id="editStatusMessage" role="status" aria-live="polite"></p></form></dialog>
 
-<section id="dayClose" class="day-close hidden" aria-labelledby="dayCloseTitle">
+<dialog id="dayClose" class="day-close" aria-labelledby="dayCloseTitle">
   <div class="day-close-card"><span class="eyebrow">Day complete</span><h1 id="dayCloseTitle">Finish for today</h1><p>Decide what should happen to anything still sitting on today's page. Nothing rolls forward silently.</p><div id="dayCloseItems" class="day-close-items"></div><label>Tomorrow's first action<input id="tomorrowFirst" type="text"></label><div class="dialog-actions"><button class="ghost" id="returnDashboard" type="button">Return to organiser</button><button class="primary" id="finishClosing" type="button">Save and close for now</button></div><p class="dialog-status" id="dayCloseStatus" role="status" aria-live="polite"></p></div>
-</section>
-<script src="recovery.js?v=20260905-2"></script>
+</dialog>
+<script src="recovery.js?v=20260905-3"></script>
 </body></html>
