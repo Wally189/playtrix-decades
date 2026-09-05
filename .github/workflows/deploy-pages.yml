@@ -23,6 +23,55 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: JavaScript syntax check
+        run: node --check recovery.js
+
+      - name: Static product safety check
+        shell: python
+        run: |
+          from html.parser import HTMLParser
+          from pathlib import Path
+
+          required = {
+              "today", "inbox", "tasks", "projects", "waiting", "notes",
+              "notyet", "tools", "review", "settings", "captureDialog",
+              "editDialog", "dayClose"
+          }
+          ids = set()
+          duplicates = set()
+
+          class Parser(HTMLParser):
+              def handle_starttag(self, tag, attrs):
+                  data = dict(attrs)
+                  value = data.get("id")
+                  if value:
+                      if value in ids:
+                          duplicates.add(value)
+                      ids.add(value)
+
+          html = Path("index.html").read_text(encoding="utf-8")
+          js = Path("recovery.js").read_text(encoding="utf-8")
+          readme = Path("README.md").read_text(encoding="utf-8")
+          Parser().feed(html)
+
+          missing = required - ids
+          if duplicates:
+              raise SystemExit(f"Duplicate HTML ids: {sorted(duplicates)}")
+          if missing:
+              raise SystemExit(f"Missing required product surfaces: {sorted(missing)}")
+
+          current = (html + "\n" + js + "\n" + readme).lower()
+          forbidden_current = [
+              "alanwgallagher1@gmail.com", "alanwgallagher1@outlook.com",
+              "nbt grievance", "weca onboarding", "rosary", "st joseph prayer"
+          ]
+          hits = [term for term in forbidden_current if term in current]
+          if hits:
+              raise SystemExit(f"Private/legacy fixture terms present in current product: {hits}")
+
+          print("Static Playtrix checks passed")
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
