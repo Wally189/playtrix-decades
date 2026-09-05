@@ -46,7 +46,6 @@ jobs:
           if missing: raise SystemExit(f"Missing required product surfaces: {sorted(missing)}")
           if '<dialog id="dayClose"' not in html: raise SystemExit("Day-close interaction must use a native dialog")
           if 'dialog:not([open]){display:none!important}' not in css: raise SystemExit("Closed dialogs must be hidden so they cannot intercept interaction")
-          if '.day-close:not([open]){display:none}' not in css: raise SystemExit("Day-close modal regression guard missing")
           if "localStorage.removeItem(KEY);localStorage.removeItem(PREVIOUS_KEY)" not in js: raise SystemExit("Reset must clear previous migration source")
           current=html+"\n"+js+"\n"+css+"\n"+readme
           if re.search(r"[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}",current,re.I): raise SystemExit("Email address present in current product source")
