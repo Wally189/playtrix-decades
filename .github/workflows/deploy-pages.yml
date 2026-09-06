@@ -2,7 +2,7 @@ name: Test and deploy Playtrix
 
 on:
   push:
-    branches: ["main", "hoc-playtrix-p0-remediation-20260905"]
+    branches: ["main", "hoc-playtrix-p0-remediation-20260905", "hoc-playtrix-experience-v4-20260906"]
   workflow_dispatch:
 
 permissions:
@@ -42,6 +42,8 @@ jobs:
           if missing: raise SystemExit(f"Missing required product surfaces: {sorted(missing)}")
           if '<dialog id="dayClose"' not in html: raise SystemExit("Day-close interaction must use a native dialog")
           if 'dialog:not([open]){display:none!important}' not in css: raise SystemExit("Closed dialogs must be hidden so they cannot intercept interaction")
+          if "document.getElementById('captureDialog').close()" not in html: raise SystemExit("Capture dialog needs an explicit cancel/close path")
+          if "document.getElementById('editDialog').close()" not in html: raise SystemExit("Edit dialog needs an explicit cancel/close path")
           if "localStorage.removeItem(KEY);localStorage.removeItem(PREVIOUS_KEY)" not in js: raise SystemExit("Reset must clear previous migration source")
           current=html+"\n"+js+"\n"+css+"\n"+readme
           if re.search(r"[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}",current,re.I): raise SystemExit("Email address present in current product source")
