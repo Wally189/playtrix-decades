@@ -2,7 +2,7 @@ name: Test and deploy Playtrix
 
 on:
   push:
-    branches: ["main", "hoc-playtrix-p0-remediation-20260905", "hoc-playtrix-experience-v4-20260906"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -20,37 +20,59 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: JavaScript syntax check
-        run: node --check recovery.js
-      - name: Static product safety check
+      - name: Static product safety and syntax checks
         shell: python
         run: |
           from html.parser import HTMLParser
           from pathlib import Path
-          import re
-          required={"today","inbox","tasks","projects","waiting","notes","notyet","tools","review","settings","captureDialog","editDialog","dayClose"}
-          ids=set();duplicates=set()
+          import re, subprocess, tempfile
+
+          html=Path("index.html").read_text(encoding="utf-8")
+          readme=Path("README.md").read_text(encoding="utf-8")
+
+          required={"view","railNav","mobileNav","moreSheet","moreList","captureDialog","captureClose","captureCancel","captureSave","appearanceDialog","themeGrid","setupDialog","setupList","searchBtn","searchInput"}
+          ids=set();duplicates=set();scripts=[]
           class Parser(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.in_script=False; self.buf=[]
               def handle_starttag(self,tag,attrs):
                   value=dict(attrs).get("id")
                   if value:
                       if value in ids: duplicates.add(value)
                       ids.add(value)
-          html=Path("index.html").read_text(encoding="utf-8");js=Path("recovery.js").read_text(encoding="utf-8");css=Path("styles.css").read_text(encoding="utf-8");readme=Path("README.md").read_text(encoding="utf-8");Parser().feed(html)
+                  if tag == "script" and not dict(attrs).get("src"):
+                      self.in_script=True; self.buf=[]
+              def handle_data(self,data):
+                  if self.in_script: self.buf.append(data)
+              def handle_endtag(self,tag):
+                  if tag == "script" and self.in_script:
+                      scripts.append("".join(self.buf)); self.in_script=False
+          p=Parser(); p.feed(html)
           missing=required-ids
           if duplicates: raise SystemExit(f"Duplicate HTML ids: {sorted(duplicates)}")
           if missing: raise SystemExit(f"Missing required product surfaces: {sorted(missing)}")
-          if '<dialog id="dayClose"' not in html: raise SystemExit("Day-close interaction must use a native dialog")
-          if 'dialog:not([open]){display:none!important}' not in css: raise SystemExit("Closed dialogs must be hidden so they cannot intercept interaction")
-          if "document.getElementById('captureDialog').close()" not in html: raise SystemExit("Capture dialog needs an explicit cancel/close path")
-          if "document.getElementById('editDialog').close()" not in html: raise SystemExit("Edit dialog needs an explicit cancel/close path")
-          if "localStorage.removeItem(KEY);localStorage.removeItem(PREVIOUS_KEY)" not in js: raise SystemExit("Reset must clear previous migration source")
-          current=html+"\n"+js+"\n"+css+"\n"+readme
+          if not scripts: raise SystemExit("No inline application script found")
+          with tempfile.NamedTemporaryFile("w",suffix=".js",delete=False,encoding="utf-8") as f:
+              f.write("\n".join(scripts)); js_path=f.name
+          subprocess.run(["node","--check",js_path],check=True)
+
+          required_phrases=[
+              "Ink & Electric","Midnight & Signal","Teal & Coral","Chromatic Sections",
+              "Hide or reorder sections without deleting their records.",
+              "Inbox — decide later","Keep for later","Appearance","Organiser setup"
+          ]
+          absent=[x for x in required_phrases if x not in html]
+          if absent: raise SystemExit(f"Missing Concept B requirements: {absent}")
+          if "captureClose" not in html or "captureCancel" not in html: raise SystemExit("Capture requires independent Close and Cancel controls")
+          if "confirm('Reset this organiser?" not in html: raise SystemExit("Reset requires explicit confirmation")
+          if "playtrix.organiser.v4" not in html or "playtrix.organiser.v3" not in html: raise SystemExit("Current storage key and v3 migration source must be present")
+          current=html+"\n"+readme
           if re.search(r"[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}",current,re.I): raise SystemExit("Email address present in current product source")
           if re.search(r"https?://(?:docs|drive)\.google\.com/",current,re.I): raise SystemExit("Private-workspace style Google URL present in current product source")
-          legacy_terms=["nbt grievance","weca onboarding","rosary","st joseph prayer"];lowered=current.lower();hits=[term for term in legacy_terms if term in lowered]
+          legacy_terms=["nbt grievance","weca onboarding","rosary","st joseph prayer"]
+          lowered=current.lower();hits=[term for term in legacy_terms if term in lowered]
           if hits: raise SystemExit(f"Legacy fixture terms present in current product: {hits}")
-          print("Static Playtrix checks passed")
+          print("Static Playtrix v4 checks passed")
   deploy:
     if: github.ref == 'refs/heads/main'
     needs: test
